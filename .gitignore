@@ -1,0 +1,26 @@
+# Cartella di configurazione IntelliJ
+.idea/
+*.iml
+
+# Cartelle di output compilato
+/out/
+/bin/
+/target/
+/build/
+
+# File di log
+*.log
+
+# File temporanei di sistema
+.DS_Store
+Thumbs.db
+
+# Node Modules
+node_modules/
+
+# CV HTML
+cv.html
+RiccardoBianchiCV.html
+
+# Claude Code config
+.claude/

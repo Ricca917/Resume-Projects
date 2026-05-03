@@ -1,0 +1,1349 @@
+{
+	"info": {
+		"_postman_id": "9a868f1b-56c4-420e-bbce-475db7be4e60",
+		"name": "Football_Team",
+		"description": "LEGGIMI:  \nPrima di tutto creare Giocatori e Squadre, dopo utilizzare i propri ID (teamId & playerId) per fare le richieste specifiche.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43529590",
+		"_collection_link": "https://riccardobianchi.postman.co/workspace/Lezione-ITS~080db3c1-2e6a-46c3-a65a-ee901ba6b1f3/collection/43529590-9a868f1b-56c4-420e-bbce-475db7be4e60?action=share&source=collection_link&creator=43529590"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Registrazione Users/Admin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"Admin\",\r\n  \"password\": \"passwordAdmin\",\r\n  \"role\": \"ADMIN\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Users/Admin",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Admin\",\r\n    \"password\": \"passwordAdmin\"    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Visualizza Utenti",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBZG1pbiIsImlhdCI6MTc1MzUxNTU1MywiZXhwIjoxNzUzNjAxOTUzfQ.UQdBzLLJLkn8GxpiiY7ebjXvnqAmeZ9qFJR2yqVsz8lo5jaIUAQwHOsU7lEtZ8VeVvuCVf4NAUIMCtPoTOu54A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Visualizza Utente tramite ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBZG1pbiIsImlhdCI6MTc1MzUxNTU1MywiZXhwIjoxNzUzNjAxOTUzfQ.UQdBzLLJLkn8GxpiiY7ebjXvnqAmeZ9qFJR2yqVsz8lo5jaIUAQwHOsU7lEtZ8VeVvuCVf4NAUIMCtPoTOu54A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/users/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Aggiorna Utente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBZG1pbiIsImlhdCI6MTc1MzAyOTQ0MywiZXhwIjoxNzUzMTE1ODQzfQ.0kSwf9ZfzbJS8bdqzGuj_4fcXXQ_ckjcDHFiRZeOzZ-U-DLcgrBRIoiWxBg1Z9vdjW0jcP63Nwp8LihBoOuNtg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Utente2\",\r\n    \"password\": \"PasswordUtente2\",\r\n    \"role\": \"USER\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Elimina Utente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBZG1pbiIsImlhdCI6MTc1MzAyOTQ0MywiZXhwIjoxNzUzMTE1ODQzfQ.0kSwf9ZfzbJS8bdqzGuj_4fcXXQ_ckjcDHFiRZeOzZ-U-DLcgrBRIoiWxBg1Z9vdjW0jcP63Nwp8LihBoOuNtg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/users/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Players",
+			"item": [
+				{
+					"name": "Creazione Giocatori",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyX2Jhc2UiLCJpYXQiOjE3NTMwMjMyODMsImV4cCI6MTc1MzEwOTY4M30.CjGSOYYaPTAFcCO4LV7_-k_HalupIZGtx8qM3GDf4lGaKl4Lycj4UKJcIZlwRfHRcOrLqGF3f-rpLTULEQlmqA\"",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Nuovo\",\r\n    \"lastName\": \"Giocatore\",\r\n    \"dateOfBirth\": \"2000-01-01\",\r\n    \"age\": 24,\r\n    \"position\": \"Attaccante\",\r\n    \"nationality\": \"Italiana\",\r\n    \"jerseyNumber\": 7,\r\n    \"appearances\": 0,\r\n    \"goals\": 0,\r\n    \"isFreeAgent\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/players",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"players"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Visualizza Giocatori",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyX2Jhc2UiLCJpYXQiOjE3NTMwMjMyODMsImV4cCI6MTc1MzEwOTY4M30.CjGSOYYaPTAFcCO4LV7_-k_HalupIZGtx8qM3GDf4lGaKl4Lycj4UKJcIZlwRfHRcOrLqGF3f-rpLTULEQlmqA\"",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/players",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"players"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Visualizza Giocatori Svincolati",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1dGVudGVOb3JtYWxlIiwiaWF0IjoxNzUyNzc2ODY2LCJleHAiOjE3NTI4NjMyNjZ9.7g4bTODwkZRf7XLopgJ3b0VWZcD6fCSj0qMBuvn684gW1fTMLIvBN1SebKbpr57HOmaI_3KgD8cJFGNqyTEPCg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/players/free",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"players",
+								"free"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Visualizza Giocatore tramite ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1dGVudGVOb3JtYWxlIiwiaWF0IjoxNzUyNzc2ODY2LCJleHAiOjE3NTI4NjMyNjZ9.7g4bTODwkZRf7XLopgJ3b0VWZcD6fCSj0qMBuvn684gW1fTMLIvBN1SebKbpr57HOmaI_3KgD8cJFGNqyTEPCg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/players/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"players",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Visualizza Giocatori Per Ruolo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1dGVudGVOb3JtYWxlIiwiaWF0IjoxNzUyNzc2ODY2LCJleHAiOjE3NTI4NjMyNjZ9.7g4bTODwkZRf7XLopgJ3b0VWZcD6fCSj0qMBuvn684gW1fTMLIvBN1SebKbpr57HOmaI_3KgD8cJFGNqyTEPCg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/players/ByPosition",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"players",
+								"ByPosition"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Visualizza Giocatori per Nazionalità",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1dGVudGVOb3JtYWxlIiwiaWF0IjoxNzUyNzc2ODY2LCJleHAiOjE3NTI4NjMyNjZ9.7g4bTODwkZRf7XLopgJ3b0VWZcD6fCSj0qMBuvn684gW1fTMLIvBN1SebKbpr57HOmaI_3KgD8cJFGNqyTEPCg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/players/ByNationality",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"players",
+								"ByNationality"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Aggiorna Giocatori",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1dGVudGVOb3JtYWxlIiwiaWF0IjoxNzUyNzc2ODY2LCJleHAiOjE3NTI4NjMyNjZ9.7g4bTODwkZRf7XLopgJ3b0VWZcD6fCSj0qMBuvn684gW1fTMLIvBN1SebKbpr57HOmaI_3KgD8cJFGNqyTEPCg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 8,\r\n        \"firstName\": \"Lionel\",\r\n        \"lastName\": \"Messi\",\r\n        \"nationality\": \"Argentina\",\r\n        \"age\": 37,\r\n        \"dateOfBirth\": \"1987-06-24\",\r\n        \"position\": \"Attaccante\",\r\n        \"jerseyNumber\": 10,\r\n        \"appearances\": 900,\r\n        \"goals\": 790,\r\n        \"teamName\": null,\r\n        \"isFreeAgent\": true\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/players/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"players",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Associazione Giocatore a Squadra",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1dGVudGVOb3JtYWxlIiwiaWF0IjoxNzUyNzc2ODY2LCJleHAiOjE3NTI4NjMyNjZ9.7g4bTODwkZRf7XLopgJ3b0VWZcD6fCSj0qMBuvn684gW1fTMLIvBN1SebKbpr57HOmaI_3KgD8cJFGNqyTEPCg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/teams/1/players/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"teams",
+								"1",
+								"players",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Associazione Lista Giocatori a Squadra",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1dGVudGVOb3JtYWxlIiwiaWF0IjoxNzUyNzc2ODY2LCJleHAiOjE3NTI4NjMyNjZ9.7g4bTODwkZRf7XLopgJ3b0VWZcD6fCSj0qMBuvn684gW1fTMLIvBN1SebKbpr57HOmaI_3KgD8cJFGNqyTEPCg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[2, 4, 6]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/teams/1/players",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"teams",
+								"1",
+								"players"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rimuovi Giocatore da Squadra",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1dGVudGVOb3JtYWxlIiwiaWF0IjoxNzUyNzc2ODY2LCJleHAiOjE3NTI4NjMyNjZ9.7g4bTODwkZRf7XLopgJ3b0VWZcD6fCSj0qMBuvn684gW1fTMLIvBN1SebKbpr57HOmaI_3KgD8cJFGNqyTEPCg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/teams/1/players/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"teams",
+								"1",
+								"players",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Elimina Giocatore",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1dGVudGVOb3JtYWxlIiwiaWF0IjoxNzUyNzc2ODY2LCJleHAiOjE3NTI4NjMyNjZ9.7g4bTODwkZRf7XLopgJ3b0VWZcD6fCSj0qMBuvn684gW1fTMLIvBN1SebKbpr57HOmaI_3KgD8cJFGNqyTEPCg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/players/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"players",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Teams",
+			"item": [
+				{
+					"name": "Creazione Squadre",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1dGVudGVOb3JtYWxlIiwiaWF0IjoxNzUyNzc2ODY2LCJleHAiOjE3NTI4NjMyNjZ9.7g4bTODwkZRf7XLopgJ3b0VWZcD6fCSj0qMBuvn684gW1fTMLIvBN1SebKbpr57HOmaI_3KgD8cJFGNqyTEPCg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"teamName\": \"Inter Miami\",\r\n    \"foundingYear\": 1913,\r\n    \"president\": \"Kyle Krause\",\r\n    \"coach\": \"Carlos Cuesta\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/teams",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"teams"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Visualizza Squadre",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1dGVudGVOb3JtYWxlIiwiaWF0IjoxNzUyNzc2ODY2LCJleHAiOjE3NTI4NjMyNjZ9.7g4bTODwkZRf7XLopgJ3b0VWZcD6fCSj0qMBuvn684gW1fTMLIvBN1SebKbpr57HOmaI_3KgD8cJFGNqyTEPCg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/teams",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"teams"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Visualizza Squadra tramite ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1dGVudGVOb3JtYWxlIiwiaWF0IjoxNzUyNzc2ODY2LCJleHAiOjE3NTI4NjMyNjZ9.7g4bTODwkZRf7XLopgJ3b0VWZcD6fCSj0qMBuvn684gW1fTMLIvBN1SebKbpr57HOmaI_3KgD8cJFGNqyTEPCg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/teams/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"teams",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Elimina Squadre",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1dGVudGVOb3JtYWxlIiwiaWF0IjoxNzUyNzc2ODY2LCJleHAiOjE3NTI4NjMyNjZ9.7g4bTODwkZRf7XLopgJ3b0VWZcD6fCSj0qMBuvn684gW1fTMLIvBN1SebKbpr57HOmaI_3KgD8cJFGNqyTEPCg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/teams/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"teams",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Leagues",
+			"item": [
+				{
+					"name": "Creazione Campionati/Coppe",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1dGVudGVOb3JtYWxlIiwiaWF0IjoxNzUyNzc2ODY2LCJleHAiOjE3NTI4NjMyNjZ9.7g4bTODwkZRf7XLopgJ3b0VWZcD6fCSj0qMBuvn684gW1fTMLIvBN1SebKbpr57HOmaI_3KgD8cJFGNqyTEPCg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Lega Test User\",\r\n    \"country\": \"Paese Test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/leagues",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"leagues"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Visualizza Campionati/Coppe",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzdXBlckFkbWluIiwiaWF0IjoxNzUzMDI1MDU3LCJleHAiOjE3NTMxMTE0NTd9.R_esF_8k1WPyURYETbOe6cBQLNMpVSMnmbBi9sgIVZjBVua_YNRsy1lYMdv74qII8E5CKyR7aoyyxorK-7J2wg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/leagues",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"leagues"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Visualizza Campionato/Coppa per ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzdXBlckFkbWluIiwiaWF0IjoxNzUyNzc2ODk4LCJleHAiOjE3NTI4NjMyOTh9.lFVgWO_qRwM_4DbDLc36sxLDbZYkaM6uux-ABvt8IKu7rJITxpGC-QB2cpb8tlLeD43ACPO3LRw2NByHhdPplw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/leagues/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"leagues",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Aggiorna Campionato/Coppa",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1dGVudGVOb3JtYWxlIiwiaWF0IjoxNzUyNzc2ODY2LCJleHAiOjE3NTI4NjMyNjZ9.7g4bTODwkZRf7XLopgJ3b0VWZcD6fCSj0qMBuvn684gW1fTMLIvBN1SebKbpr57HOmaI_3KgD8cJFGNqyTEPCg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Serie A TIM\",\r\n    \"country\": \"Italy\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/leagues/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"leagues",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Elimina Campionato/Coppa",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1dGVudGVOb3JtYWxlIiwiaWF0IjoxNzUyNzc2ODY2LCJleHAiOjE3NTI4NjMyNjZ9.7g4bTODwkZRf7XLopgJ3b0VWZcD6fCSj0qMBuvn684gW1fTMLIvBN1SebKbpr57HOmaI_3KgD8cJFGNqyTEPCg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/leagues/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"leagues",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Contract",
+			"item": [
+				{
+					"name": "Creazione Contratti",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1dGVudGVOb3JtYWxlIiwiaWF0IjoxNzUyNzc2ODY2LCJleHAiOjE3NTI4NjMyNjZ9.7g4bTODwkZRf7XLopgJ3b0VWZcD6fCSj0qMBuvn684gW1fTMLIvBN1SebKbpr57HOmaI_3KgD8cJFGNqyTEPCg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"startDate\": \"2024-07-18\",\r\n    \"endDate\": \"2029-07-18\",\r\n    \"salary\": 5000000.00,\r\n    \"provisions\": \"Bonus goal, clausola rescissoria 100M\",\r\n    \"playerId\": 8\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/contracts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"contracts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Visualizza Contratti",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzdXBlckFkbWluIiwiaWF0IjoxNzUyNzc2ODk4LCJleHAiOjE3NTI4NjMyOTh9.lFVgWO_qRwM_4DbDLc36sxLDbZYkaM6uux-ABvt8IKu7rJITxpGC-QB2cpb8tlLeD43ACPO3LRw2NByHhdPplw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/contracts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"contracts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Visualizza Contratto per ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzdXBlckFkbWluIiwiaWF0IjoxNzUyNzc2ODk4LCJleHAiOjE3NTI4NjMyOTh9.lFVgWO_qRwM_4DbDLc36sxLDbZYkaM6uux-ABvt8IKu7rJITxpGC-QB2cpb8tlLeD43ACPO3LRw2NByHhdPplw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/contracts/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"contracts",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Aggiorna Contratto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1dGVudGVOb3JtYWxlIiwiaWF0IjoxNzUyNzc2ODY2LCJleHAiOjE3NTI4NjMyNjZ9.7g4bTODwkZRf7XLopgJ3b0VWZcD6fCSj0qMBuvn684gW1fTMLIvBN1SebKbpr57HOmaI_3KgD8cJFGNqyTEPCg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"startDate\": \"2024-07-18\",\r\n    \"endDate\": \"2030-07-18\",\r\n    \"salary\": 6000000.00,\r\n    \"provisions\": \"Bonus goal aumentatoooo, clausola rescissoria 120M\",\r\n    \"playerId\": 8\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/contracts/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"contracts",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Elimina Contratto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1dGVudGVOb3JtYWxlIiwiaWF0IjoxNzUyNzc2ODY2LCJleHAiOjE3NTI4NjMyNjZ9.7g4bTODwkZRf7XLopgJ3b0VWZcD6fCSj0qMBuvn684gW1fTMLIvBN1SebKbpr57HOmaI_3KgD8cJFGNqyTEPCg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/contracts/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"contracts",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Exceptions",
+			"item": [
+				{
+					"name": "Errore Creazione Squadra",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"teamName\": \"\",\r\n    \"foundingYear\": 1800,\r\n    \"president\": \"M\",\r\n    \"coach\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/teams",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"teams"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Errore Creazione Giocatore",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"s\",         \r\n    \"lastName\": \"R\",         \r\n    \"position\": \"\",          \r\n    \"dateOfBirth\": \"1800-01-01\",\r\n    \"nationality\": \"I\"         \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/players",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"players"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Errore Eliminazione Giocatore",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/players/9999",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"players",
+								"9999"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

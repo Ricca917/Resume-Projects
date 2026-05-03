@@ -1,0 +1,542 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap");
+/* --- GENERAL RESET & BASE STYLES --- */
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  font-family: "Orbitron", sans-serif;
+  color: #e0e0e0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Allinea in alto, per permettere scroll se il contenuto è lungo */
+  padding: 40px 20px;
+  box-sizing: border-box; /* Include padding nel calcolo della larghezza/altezza */
+}
+
+.main-content {
+  max-width: 650px; /* Leggermente più largo per più spazio */
+  width: 100%;
+  background: rgba(10, 10, 25, 0.9);
+  border-radius: 18px; /* Bordi più arrotondati */
+  box-shadow: 0 0 15px #00f0ff, 0 0 30px #8a2be2; /* Ombre più pronunciate */
+  padding: 35px 45px; /* Padding leggermente aumentato */
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4 { /* Aggiunto h3 e h4 per consistenza */
+  text-align: center;
+  color: #00f0ff;
+  text-shadow: 0 0 6px #00f0ff, 0 0 20px #8a2be2, 0 0 25px #ff6600;
+  margin-bottom: 25px; /* Aumentato il margine inferiore */
+}
+
+h1 {
+  font-size: 3.2rem; /* Leggermente più grande */
+  letter-spacing: 0.18em; /* Leggermente più spazioso */
+  margin-top: 0; /* Rimuovi margine superiore di default */
+}
+
+h2 {
+  font-size: 2rem; /* Leggermente più grande */
+  letter-spacing: 0.12em;
+}
+
+h3 { /* Nuovo stile per titoli intermedi, es. "Tags per..." */
+  font-size: 1.5rem;
+  color: #00eaff;
+  text-shadow: 0 0 10px #00eaff;
+  margin-top: 30px;
+}
+
+h4 { /* Nuovo stile per sottotitoli, es. "Tag Assegnati" */
+  font-size: 1.2rem;
+  color: #ff9933;
+  text-shadow: 0 0 8px #ff9933;
+  margin-top: 20px;
+  text-align: left; /* Allinea a sinistra */
+}
+
+/* --- FORM STYLES --- */
+.form-section {
+  margin-bottom: 30px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px; /* Spazio tra gli elementi del form */
+}
+
+input[type=text] {
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.15rem; /* Leggermente più grande */
+  padding: 12px 18px; /* Padding aumentato */
+  border: 2px solid #00f0ff;
+  border-radius: 12px; /* Più arrotondato */
+  background: transparent;
+  color: #a0f0ff;
+  width: 100%;
+  max-width: 450px; /* Aumentato max-width */
+  box-shadow: inset 0 0 8px #00f0ff; /* Bagliore interno più forte */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+input[type=text]::placeholder {
+  color: #60cfff;
+  opacity: 0.8; /* Più visibile */
+}
+
+input[type=text]:focus {
+  outline: none;
+  border-color: #ff6600;
+  box-shadow: 0 0 10px #ff6600, inset 0 0 15px #ff6600;
+  background: rgba(255, 102, 0, 0.15); /* Sfondo più visibile al focus */
+}
+
+input[type=submit] {
+  margin-top: 15px;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 700;
+  font-size: 1.3rem; /* Leggermente più grande */
+  background: #ff6600;
+  border: none;
+  border-radius: 15px; /* Più arrotondato */
+  padding: 14px 40px; /* Padding aumentato */
+  color: #fff;
+  cursor: pointer;
+  text-shadow: 0 0 10px #ff9933; /* Ombra testo più forte */
+  box-shadow: 0 0 18px #ff6600, 0 0 35px #ff9933;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type=submit]:hover {
+  background: #ffa833;
+  box-shadow: 0 0 30px #ffa833, 0 0 60px #ffcc66;
+}
+
+/* --- LIST & NOTE STYLES --- */
+ul { /* Stile generale per tutti gli ul per rimuovere padding di default */
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.list-item,
+#noteList li,
+.tag-item { /* Estendo per includere tag-item per consistenza */
+  background: rgba(0, 240, 255, 0.15); /* Sfondo leggermente più scuro */
+  margin-bottom: 15px; /* Margine inferiore aumentato per più spazio */
+  border-radius: 16px; /* Bordi più arrotondati */
+  padding: 18px 25px; /* Padding aumentato */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 0 12px #00f0ff; /* Bagliore più forte */
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.list-item.selected {
+  background: rgba(255, 102, 0, 0.35); /* Sfondo più scuro quando selezionato */
+  box-shadow: 0 0 25px #ff6600, 0 0 45px #ff6600;
+}
+
+.list-item span,
+.note-text-input { /* Usiamo la nuova classe per le note */
+  flex-grow: 1;
+  color: #a0f0ff;
+  font-weight: 600;
+  font-size: 1.15rem; /* Leggermente più grande */
+  user-select: none;
+  margin-right: 15px; /* Spazio tra testo e bottoni */
+  word-break: break-word; /* Rompi parole lunghe */
+}
+
+.note-text-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: default;
+  font-family: "Orbitron", sans-serif;
+  color: #a0f0ff;
+  flex-grow: 1;
+  align-items: center;
+}
+
+.note-text-input-editable { /* Stile per input note quando modificabile */
+  cursor: text;
+  background: rgba(255, 102, 0, 0.2);
+  border-radius: 10px;
+  padding-left: 8px;
+  border: 1px solid #ff6600 !important; /* Forza il bordo quando modificabile */
+}
+
+/* --- BUTTON STYLES --- */
+button {
+  background: #00f0ff;
+  border: none;
+  border-radius: 12px; /* Più arrotondato */
+  color: #111;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 700;
+  padding: 8px 20px; /* Padding aumentato */
+  margin-left: 15px; /* Margine aumentato */
+  cursor: pointer;
+  box-shadow: 0 0 15px #00f0ff; /* Bagliore più forte */
+  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  user-select: none;
+  white-space: nowrap; /* Evita che il testo vada a capo sui bottoni piccoli */
+}
+
+button:hover {
+  background: #33ffff;
+  box-shadow: 0 0 25px #33ffff, 0 0 40px #66ffff; /* Bagliore più intenso */
+  transform: translateY(-2px); /* Effetto leggero di sollevamento */
+}
+
+button:disabled {
+  background: #555;
+  box-shadow: none;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Stile per il pulsante "Mostra Liste Archiviate" */
+#toggleArchiveBtn {
+  display: block; /* Assicurati che sia un blocco per avere il margine automatico */
+  margin: 20px auto 30px auto; /* Centrato e con più spazio */
+  background: #8a2be2; /* Colore viola */
+  box-shadow: 0 0 15px #8a2be2, 0 0 30px #9933ff;
+  color: #fff;
+  font-size: 1.1rem;
+  padding: 12px 30px;
+}
+
+#toggleArchiveBtn:hover {
+  background: #9933ff;
+  box-shadow: 0 0 25px #9933ff, 0 0 50px #bb66ff;
+  transform: translateY(-2px);
+}
+
+/* --- CHECKBOX STYLES --- */
+input[type=checkbox] {
+  width: 20px; /* Leggermente più grande */
+  height: 20px; /* Leggermente più grande */
+  accent-color: #ff6600;
+  margin-right: 18px; /* Margine aumentato */
+  cursor: pointer;
+  min-width: 20px; /* Per prevenire che si rimpicciolisca */
+}
+
+/* --- MESSAGE STYLES --- */
+.no-items-message { /* Classe generica per messaggi di "nessun elemento" */
+  color: #60cfff;
+  font-style: italic;
+  text-align: center;
+  margin-top: 25px; /* Margine aumentato */
+  margin-bottom: 25px;
+  user-select: none;
+  font-size: 1.1rem;
+}
+
+.no-items-message-small { /* Per messaggi più discreti */
+  color: #60cfff;
+  font-style: italic;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+
+.error-message { /* Stile per messaggi di errore visualizzati nell'UI */
+  color: #ff3300;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 15px;
+  font-size: 1.1rem;
+}
+
+/* --- HORIZONTAL RULE (HR) STYLES --- */
+hr {
+  border: 1px solid #00f0ff;
+  margin: 40px 0; /* Margine aumentato per separare le sezioni */
+  box-shadow: 0 0 18px #00f0ff; /* Bagliore più forte */
+}
+
+/* --- SCROLLBAR STYLES --- */
+::-webkit-scrollbar {
+  width: 10px; /* Leggermente più largo */
+}
+
+::-webkit-scrollbar-track {
+  background: #0f0c29;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00f0ff;
+  border-radius: 5px; /* Più arrotondato */
+  box-shadow: 0 0 10px #00f0ff; /* Bagliore più forte */
+}
+
+/* --- SEZIONE NOTE DELLA LISTA --- */
+.notes-section {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 2px solid #ff6600; /* Bordo superiore per separare */
+  box-shadow: 0 -10px 20px rgba(255, 102, 0, 0.1); /* Ombra per profondità */
+}
+
+/* --- TAGS GESTIONE GLOBALE (include anche assegnazione alla lista) --- */
+.tag-manager {
+  padding-top: 20px;
+  border-top: 2px solid #00f0ff; /* Bordo superiore più marcato */
+  margin-top: 40px; /* Più spazio sopra */
+  box-shadow: 0 -10px 20px rgba(0, 240, 255, 0.1);
+}
+
+#tagListContainer {
+  margin-top: 20px;
+}
+
+.tag-item {
+  background: rgba(138, 43, 226, 0.18); /* Sfondo viola leggermente più scuro */
+  box-shadow: 0 0 15px #8a2be2; /* Bagliore viola più intenso */
+  justify-content: space-between; /* Spazio tra nome e bottoni */
+  flex-wrap: wrap; /* Permetti ai bottoni di andare a capo su schermi piccoli */
+}
+
+.tag-item span {
+  color: #cc99ff;
+  font-size: 1.1rem;
+  flex-grow: 1; /* Permetti al nome di crescere */
+  margin-right: 15px; /* Spazio tra nome e bottoni */
+}
+
+.tag-item input[type=text] { /* Input modifica tag globale */
+  max-width: calc(100% - 150px); /* Regola larghezza */
+  margin-right: 15px;
+}
+
+.tag-item-buttons { /* Contenitore per i bottoni dei tag globali */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Spazio tra i bottoni */
+}
+
+.tag-item button {
+  background: #9933ff;
+  box-shadow: 0 0 12px #9933ff;
+  padding: 7px 18px;
+  font-size: 1rem;
+  margin-left: 0; /* Rimuovi margin-left generale */
+}
+
+.tag-item button:hover {
+  background: #bb66ff;
+  box-shadow: 0 0 20px #bb66ff;
+}
+
+/* --- STILI SPECIFICI PER I TAG ASSOCIATI ALLA LISTA --- */
+#listTagsContainer {
+  margin-top: 25px; /* Spazio sopra la sezione tag per la lista */
+  padding: 15px;
+  border: 1px dashed rgba(255, 153, 51, 0.3); /* Bordo per distinguere */
+  border-radius: 10px;
+  background: rgba(255, 102, 0, 0.05); /* Sfondo leggermente arancione */
+  box-shadow: inset 0 0 10px rgba(255, 153, 51, 0.2);
+}
+
+#listTagsContainer h3 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #ffcc66; /* Un colore caldo per il titolo dei tag della lista */
+  text-shadow: 0 0 8px #ffcc66;
+}
+
+#listNameForTags {
+  color: #a0f0ff; /* Colore diverso per il nome della lista nel titolo dei tag */
+  font-style: normal;
+  font-size: 1.1em;
+}
+
+#listTagsContainer h4 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  text-align: left;
+  color: #ff9933;
+  font-size: 1.05rem;
+  border-bottom: 1px dotted rgba(255, 153, 51, 0.3);
+  padding-bottom: 5px;
+}
+
+#assignedTagsDisplay {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px; /* Spazio tra i tag */
+  margin-bottom: 15px;
+  min-height: 30px; /* Garantisce spazio anche se non ci sono tag */
+  align-items: center;
+  justify-content: center; /* Centra i tag se sono pochi */
+}
+
+.tag-assigned { /* Stile per il singolo tag assegnato */
+  background: rgba(138, 43, 226, 0.25); /* Sfondo viola più scuro */
+  border: 1px solid #9933ff;
+  color: #cc99ff;
+  padding: 6px 12px;
+  border-radius: 8px;
+  display: inline-flex; /* Per allineamento bottone 'x' */
+  align-items: center;
+  box-shadow: 0 0 8px #9933ff;
+  font-size: 0.95rem;
+  white-space: nowrap; /* Evita che il testo del tag vada a capo */
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tag-assigned:hover {
+  background: rgba(138, 43, 226, 0.4);
+  box-shadow: 0 0 12px #9933ff;
+}
+
+.tag-assigned button { /* Bottone 'x' per rimuovere tag dalla lista */
+  background: transparent !important;
+  border: none !important;
+  color: #ff6600 !important;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-left: 8px !important;
+  padding: 0 5px !important;
+  box-shadow: none !important;
+  transition: color 0.2s ease;
+  cursor: pointer;
+}
+
+.tag-assigned button:hover {
+  color: #ff3300 !important;
+  transform: none !important; /* Rimuovi trasformazione */
+}
+
+.add-tag-to-list-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centra gli elementi */
+  gap: 15px;
+  margin-top: 15px;
+}
+
+#availableTagsSelect {
+  font-family: "Orbitron", sans-serif;
+  padding: 10px 15px;
+  border: 2px solid #ff6600;
+  border-radius: 10px;
+  background: rgba(255, 102, 0, 0.1);
+  color: #a0f0ff;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: inset 0 0 6px #ff6600;
+  max-width: 250px;
+  flex-grow: 1; /* Permetti al select di crescere */
+}
+
+#availableTagsSelect option {
+  background: #0f0c29;
+  color: #a0f0ff;
+  padding: 5px;
+}
+
+#assignTagBtn {
+  background: #ff6600;
+  box-shadow: 0 0 10px #ff6600;
+  font-size: 1rem;
+  padding: 10px 25px;
+  margin-left: 0;
+}
+
+#assignTagBtn:hover {
+  background: #ffa833;
+  box-shadow: 0 0 18px #ffa833;
+}
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+@media (max-width: 650px) {
+  .main-content {
+    padding: 25px 20px;
+    border-radius: 12px;
+  }
+  h1 {
+    font-size: 2.5rem;
+  }
+  h2 {
+    font-size: 1.6rem;
+  }
+  h3, h4 {
+    font-size: 1.3rem;
+    text-align: center; /* Centra anche i sottotitoli su mobile */
+  }
+  input[type=text], input[type=submit], button {
+    max-width: 100%;
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+  /* Impila elementi nelle liste e note su schermi piccoli */
+  .list-item, #noteList li, .tag-item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+  }
+  .list-item span,
+  .note-text-input {
+    margin-bottom: 10px;
+    margin-right: 0;
+    width: 100%;
+  }
+  .list-item-buttons, .note-item-buttons, .tag-item-buttons {
+    flex-direction: row; /* Mantieni i bottoni affiancati */
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 10px;
+    justify-content: center; /* Centra i bottoni */
+    gap: 8px; /* Spazio più piccolo tra i bottoni */
+  }
+  .list-item button,
+  #noteList li button,
+  .tag-item button {
+    margin-left: 0; /* Rimuovi margine sinistro */
+    flex-grow: 1; /* Permetti ai bottoni di crescere */
+    min-width: unset; /* Rimuovi min-width */
+  }
+  #noteList li input[type=checkbox] {
+    align-self: flex-start;
+    margin-bottom: 10px;
+  }
+  #toggleArchiveBtn {
+    font-size: 1rem;
+    padding: 10px 25px;
+  }
+  #assignedTagsDisplay {
+    justify-content: center; /* Centra i tag anche su mobile */
+  }
+  .tag-assigned {
+    font-size: 0.85rem;
+    padding: 5px 10px;
+  }
+  .remove-tag-btn {
+    font-size: 1rem;
+  }
+  .add-tag-to-list-controls {
+    flex-direction: column; /* Impila select e button */
+    gap: 10px;
+    width: 100%;
+  }
+  #availableTagsSelect {
+    max-width: 100%; /* Occupa tutta la larghezza */
+  }
+  #assignTagBtn {
+    width: 100%;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Esercitazione To-do list</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta name="description" content=""/>
+        <link rel="stylesheet" type="text/css" href="./dist/main.css"/>
+    </head>
+    <body>
+        <div class="main-content">
+            <h1>To-Do List</h1>
+
+            <h2>List Generator</h2>
+            <div>
+                <form id="FormList">
+                    <input type="text" id="listName" placeholder="Nome della nuova lista" /><br />
+                    <input type="submit" value="Crea Lista" />
+                </form>
+            </div>
+            <ul id="listContainer"></ul>
+
+            <hr>
+
+            <h2>Note della Lista: <span id="currentListName">Nessuna</span></h2>
+            <p id="noListSelectedMessage">Seleziona una lista per vedere o aggiungere note.</p>
+
+            <div>
+                <div>
+                    <form id="FormNote" style="display: none;">
+                        <input type="text" id="text" placeholder="Inserisci Nota" /><br />
+                        <input type="submit" value="Inserisci Nota" />
+                    </form>
+                </div>
+                <ul id="noteList"></ul>
+            </div>
+
+            <hr>
+            <h2>Gestione Tag</h2>
+            <div class="tag-manager">
+                <form id="FormTag">
+                    <input type="text" id="tagName" placeholder="Nome del nuovo tag" /><br />
+                    <input type="submit" value="Crea Tag" />
+                </form>
+                <ul id="tagListContainer"></ul>
+            </div>
+            </div>
+        <script src="./script/main.js"></script>
+    </body>
+</html>
